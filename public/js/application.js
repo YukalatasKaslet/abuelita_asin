@@ -5,21 +5,30 @@ $(document).ready(function() {
 	// de HTML este exista ya en la página. 
   $('form').submit(function(event){
       event.preventDefault();
-      var user = $(this).serialize();
-      console.log( user );
-      $.post( "/abuelita" ,user, function() {
-            alert( "success" );
+      var info = $(this).serialize();
+      console.log( info );
+      /*var posting = $.post( "/abuelita" ,info, function(data) {
+            alert( "success:" + data  );
+            
           })
-            .done(function() {
-              alert( "second success" );
+            .done(function(data) {
+              alert( "second success:" + data );
+              //cochinadas xD
+              //var content = $(data).find("#content");
+              //$("#grandma_says").empty().append( data );
             })
             .fail(function() {
               alert( "error" );
             })
             .always(function() {
               alert( "finished" );
+      );
+      posting.done(function(data) {
+        console.log(data);
+        $( "#test" ).append( data );
+          // var content = $( data ).find( "#content" );
+          // $( "#grandma_says" ).empty().append( content );
       });
-    
 /*    
     $.ajax({
       type: "POST",
@@ -28,6 +37,11 @@ $(document).ready(function() {
 
     });
 */      
+  $.post('/abuelita', info, function(data){
+    console.log(data);
+    $( "#test" ).append( data );
+  });
+
 
   });
 

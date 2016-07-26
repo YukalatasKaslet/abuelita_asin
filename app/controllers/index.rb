@@ -7,6 +7,8 @@ end
 
 
 post '/abuelita' do
+  # puts "*" * 50
+  # p params
   user_input = params[:user_input]
 
   if request.xhr?
